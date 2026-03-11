@@ -35,7 +35,7 @@
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-              <img src="{{ asset('admin') }}/images/faces/face5.jpg" alt="profile"/>
+              <img src="{{ asset('admin') }}/images/faces/{{ Auth::user()->avatar }}" alt="profile"/>
               <span class="nav-profile-name">{{ Auth::user()->name }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -71,10 +71,7 @@
             <div class="col-md-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Recent Purchases</p>
-                  <div class="table-responsive">
-
-                  </div>
+                  @yield('konten')
                 </div>
               </div>
             </div>
