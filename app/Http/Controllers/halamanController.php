@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\halaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class halamanController extends Controller
 {
@@ -13,7 +15,8 @@ class halamanController extends Controller
      */
     public function index()
     {
-        return view('dashboard.halaman.index');
+        $data = halaman::orderBy('judul', 'asc')->get();
+        return view('dashboard.halaman.index')->with('data', $data);
     }
 
     /**
@@ -34,7 +37,26 @@ class halamanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Session::flash('judul', $request->judul);
+        Session::flash('isi', $request->isi);
+
+        $request->validate(
+            [
+                'judul'=>'required',
+                'isi'=>'required',
+            ], [
+                'judul.required'=> 'Judul wajib diisi kak',
+                'isi.required'=> 'Isi wajib diisi kak',
+            ]
+        );
+
+        $data = [
+            'judul'=>$request->judul,
+            'isi'=>$request->isi,
+        ];
+        halaman::create($data);
+
+        return redirect()->route('halaman.index')->with('success', 'Berhasil menambahkan data');
     }
 
     /**

@@ -17,6 +17,10 @@
   <link rel="stylesheet" href="{{ asset('admin') }}/css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('admin') }}/images/favicon.png" />
+  
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css" rel="stylesheet">
+  
+
 </head>
 <body>
   <div class="container-scroller">
@@ -67,6 +71,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+          @include('dashboard.pesan')
           <div class="row">
             <div class="col-md-12 stretch-card">
               <div class="card">
@@ -114,6 +119,16 @@
   <!-- End custom js for this page-->
 
   <script src="{{ asset('admin') }}/js/jquery.cookie.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.js"></script>
+  <script>
+  $(document).ready(function () {
+    $('#summernote').summernote({
+      placeholder: 'Tulis isi di sini...',
+      tabsize: 2,
+      height: 200
+    });
+  });
+</script>
 </body>
 
 </html>
