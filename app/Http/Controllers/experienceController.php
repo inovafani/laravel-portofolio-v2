@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Session;
 
 class experienceController extends Controller
 {
+    protected $_tipe;
+
+    function __construct()
+    {
+        $this->_tipe = 'experience';
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,7 @@ class experienceController extends Controller
      */
     public function index()
     {
-        $data = riwayat::where('tipe', 'experience')->orderBy('tgl_akhir', 'desc')->get();
+        $data = riwayat::where('tipe', $this->_tipe)->orderBy('tgl_akhir', 'desc')->get();
         return view('dashboard.experience.index')->with('data', $data);
     }
 
@@ -60,7 +66,7 @@ class experienceController extends Controller
         $data = [
             'judul'=>$request->judul,
             'info1'=>$request->info1,
-            'tipe'=>'experience',
+            'tipe'=> $this->_tipe,
             'tgl_mulai'=>$request->tgl_mulai,
             'tgl_akhir'=>$request->tgl_akhir,
             'isi'=>$request->isi,
