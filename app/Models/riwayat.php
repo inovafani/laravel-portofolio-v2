@@ -32,7 +32,7 @@ class riwayat extends Model
         if($this->attributes['tgl_akhir']){
              return Carbon::parse($this->attributes['tgl_akhir'])->translatedFormat('d F Y');
         } else {
-            return '';
+            return 'present';
         }
        
     }
