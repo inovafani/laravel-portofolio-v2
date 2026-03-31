@@ -22,3 +22,17 @@
     <button class="btn btn-primary" name="simpan" type="submit">Submit</button>
 </form>
 @endsection
+
+@push('child-scripts')
+    <script>
+    $(document).ready(function() {
+        $('.skill').tokenfield({
+            autocomplete: {
+                source: [{!! $skill !!}],
+                delay: 100
+            },
+            showAutocompleteOnFocus: true
+        });
+    });
+</script>
+@endpush

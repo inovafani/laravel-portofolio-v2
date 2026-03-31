@@ -100,6 +100,12 @@
               <span class="menu-title">Education</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('skill.index') }}">
+              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+              <span class="menu-title">Skill</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
@@ -169,17 +175,10 @@
   });
 </script>
 
-<script>
-    $(document).ready(function() {
-        $('.skill').tokenfield({
-            autocomplete: {
-                source: [{!! $skill !!}],
-                delay: 100
-            },
-            showAutocompleteOnFocus: true
-        });
-    });
-</script>
+@stack('child-scripts')
+    
+
+
 </body>
 
 </html>
