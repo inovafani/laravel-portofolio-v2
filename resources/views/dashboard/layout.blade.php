@@ -20,6 +20,28 @@
   
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css" rel="stylesheet">
   
+  <!-- tokenfield -->
+<link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.css"
+    integrity="sha512-wcf2ifw+8xI4FktrSorGwO7lgRzGx1ld97ySj1pFADZzFdcXTIgQhHMTo7tQIADeYdRRnAjUnF00Q5WTNmL3+A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    .tokenfield .token {
+        margin: -1px 1px 1px 1px;
+        height: 25px;
+        line-height: 22px;
+        color: #fff;
+        background-color: #0b5ed7
+    }
+
+    .tokenfield .token a {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+</style>
 
 </head>
 <body>
@@ -132,6 +154,11 @@
 
   <script src="{{ asset('admin') }}/js/jquery.cookie.js" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.js"></script>
+
+  <!-- tokenfield -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+
   <script>
   $(document).ready(function () {
     $('#summernote').summernote({
@@ -140,6 +167,18 @@
       height: 200
     });
   });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.skill').tokenfield({
+            autocomplete: {
+                source: [{!! $skill !!}],
+                delay: 100
+            },
+            showAutocompleteOnFocus: true
+        });
+    });
 </script>
 </body>
 

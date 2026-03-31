@@ -1,28 +1,23 @@
 @extends('dashboard.layout')
 
 @section('konten')
-
-<div class="pb-3">
-    <a href="{{ route('halaman.index') }}" class="btn btn-secondary">Kembali</a>
-</div>
-    
-<form action="{{ route('halaman.store') }}" method="POST">
+<form action="{{ route('skill.update') }}" method="POST">
     @csrf
     <div class="mb-3">
         <label for="judul" class="form-label">Programming Language & Tools</label>
         <input
             type="text"
-            class="form-control form-control-sm"
-            name="judul"
+            class="form-control form-control-sm skill"
+            name="_language"
             id="judul"
             aria-describedby="helpId"
-            placeholder="Masukkan judul"
-            value="{{ Session::get('judul') }}"
+            placeholder="Masukkan programming language dan tools"
+            value="{{ get_meta_value('_language') }}"
         />
     </div>
     <div class="mb-3">
         <label for="judul" class="form-label">Workflow</label>
-        <textarea name="isi" id="summernote" class="form-control" rows="5">{{ Session::get('isi') }}</textarea>
+        <textarea name="_workflow" id="summernote" class="form-control" rows="5">{{ get_meta_value('_workflow') }}</textarea>
     </div>
     <button class="btn btn-primary" name="simpan" type="submit">Submit</button>
 </form>
