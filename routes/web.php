@@ -23,10 +23,6 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/', [depanController::class, "index"]);
 
 Route::redirect('home', 'dashboard');
