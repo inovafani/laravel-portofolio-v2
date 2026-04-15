@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\depanController;
 use App\Http\Controllers\educationController;
 use App\Http\Controllers\experienceController;
 use App\Http\Controllers\halamanController;
@@ -25,6 +26,8 @@ use Laravel\Socialite\Facades\Socialite;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', [depanController::class, "index"]);
 
 Route::redirect('home', 'dashboard');
 
